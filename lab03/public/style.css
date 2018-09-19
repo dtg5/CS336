@@ -1,0 +1,10 @@
+body {
+    font-family: "Times New Roman", "Georgia", sans-serif;
+    background-color: CCCCCC;
+}
+h6 {
+	font-size: 1em; 
+	font-weight:normal;
+	margin-top: 0;
+    margin-bottom: 0;
+}
