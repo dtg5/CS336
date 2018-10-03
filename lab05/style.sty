@@ -1,0 +1,66 @@
+myfont = Helvetica
+
+body
+    font 24px myfont
+    background #999999
+
+/* Here are the flex box details */
+#main 
+    min-height 400px
+    margin 0px
+    padding 0px
+    display flex
+    flex-flow row
+    article
+        margin 0px
+        padding 20px
+        border 4px ridge #cccc33
+        background #dddd88
+        flex 3 1 60%
+        order 2
+    nav 
+        margin 0px
+        padding 20px
+        border 4px ridge #8888bb
+        background #ccccff
+        flex 1 6 20%
+        order 1
+        text-align right
+        font 14pt myfont
+    aside
+        margin 0px
+        padding 20px
+        border 4px ridge #8888bb
+        background #ccccff
+        flex 1 6 20%
+        order 3
+        font bold 10pt sans-serif
+
+header, footer 
+    display block
+    margin 0px
+    padding 20px
+    min-height 100px
+    border 4px ridge #eebb55
+    background #ffeebb
+
+header 
+    font bold 48pt myfont
+
+footer 
+    font 12pt myfont
+    text-align center
+
+/* Too narrow to support three columns */
+@media all and (max-width 640px) 
+    #main, #page 
+        flex-direction column
+    
+    #main 
+    article 
+        order 2
+    nav 
+        order 1
+        text-align left
+    aside 
+        order 3
