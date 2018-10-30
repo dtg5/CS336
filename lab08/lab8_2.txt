@@ -1,0 +1,35 @@
+a. Make sure that you can explain:
+
+   i. the component structure of the application. What makes the UI composable and why does this matter?
+
+ANSWER: The tutorial says that "React is all about modular, composable components." In this example, the comment box is an interface that allows composable objects to be created by a user.  The user types some text, which the server saves in comments.json, and then the text is retrieved and rendered as HTML.  Thus, the user has composed a React component which is shown on the index page.  As the tutorial states, "You do not have to return basic HTML. You can return a tree of components that you (or someone else) built."
+
+   ii. what JSX does.
+
+ANSWER: "JSX is a JavaScript syntax extension that looks similar to XML. You can use a simple JSX syntactic transform with React."  So in essence, JSX is merely a way to make component tree structures more readable and understandable.
+
+   iii. how the data flows through the components; how are comments loaded? created? saved?
+
+ANSWER: A request is made to the server from the client browser, which the server responds to by routing the appropriate html page.  Within that page there is a React <div> marker, specifically <div id="content"></div>, which specifies the React component that needs to be generated.  The source for this is example.js, where all the appropriate JavaScript is stored.  The comment box is loaded, which is a component that includes a form.  If the user types a comment into the form and clicks "Post", the server saves the text from the comment in comments.json and then retrieves the content from comments.json and displays it on the page for the user to see.
+
+   iv. the nature and purpose of props and state; which is immutable and which is mutable and why does this distinction matter?
+
+ANSWER: First, "props" is shorthand for properties, and it is essentially used the way a static attribute usually is in object-oriented programming.  A comment component is basically an instance of a class, and props like "Author" and "Comment" are immutable attributes of each instance.  On the other hand, "state" is a mutable attribute that allows for interactions.  The state of the comment list component, for example, can change to reflect new comments as they appear.
+
+b. Consider the following, more detailed questions based on statements in the tutorial.
+
+   i. Try editing the comments.json file (to add or remove a legal comment). What happens and why?
+
+ANSWER: Adding and removing "legal" comments in the comments.json file does work (the page will reflect the changes), but with one caveat; if a mistake is made in the edit and too much is deleted, it actually halts the express server.  You end up with a "SyntaxError: Unexpected end of JSON input" error message. 
+
+   ii. When the CommentBox has loaded comments from the server (in loadCommentsFromServer()), why doesn’t it call render() to make them visible?
+
+ANSWER: Well in a manner of speaking it does, since it calls the CommentList, which contains the call to render the comments visible.
+
+   iii. Why should components always represent the current state of the view?
+
+ANSWER: As an example, I suppose this is especially ideal in comment sections where you want live conversations to be possible.
+
+   iv.  The app implements optimistic updates. Isn’t optimism here more like foolishness? What if the server rejects the new comment (for whatever reason)?
+
+ANSWER: I tried it.  The new comment quickly disappeared when it tried to fetch comments.json and found nothing there.  So it's not a huge deal, but it can result in a modest amount of confusion.
