@@ -1,0 +1,46 @@
+
+<html>
+    <head>
+        <title>Homework2get</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script-javascript.js"></script>
+        <script src="script-jquery.js"></script>
+        <script src="//code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+        $( 'pull' ).submit(function( event ) {
+          event.preventDefault();
+
+          var form = $( this );
+
+          $.ajax({
+            type: 'GET',
+            url: 'server.js',
+            data: form.serialize(),
+            dataType: 'json',
+            success: function( resp ) {
+              console.log( resp );
+            }
+          });
+        });
+        </script>
+    </head>
+    <body>
+        <form action="/pull" method="get">
+            <div>
+                <label for="id">ID:</label>
+                <input type="text" id="message" name="user_message" />
+            </div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="message" name="user_message" />
+            </div>
+            <div>
+                <label for="date">Start Date:</label>
+                <input type="text" id="message" name="user_message" />
+            </div>
+            <div class="button">
+                <button type="submit">Retrieve record</button>
+            </div>
+        </form>
+    </body>
+</html>
