@@ -1,4 +1,4 @@
-// COMMENT BOX
+
 var CommentBox = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
@@ -53,7 +53,23 @@ var CommentBox = React.createClass({
   }
 });
 
-// COMMENT FORM
+var CommentList = React.createClass({
+  render: function() {
+    var commentNodes = this.props.data.map(function(comment) {
+      return (
+        <Comment author={comment.author} key={comment.id}>
+          {comment.text}
+        </Comment>
+      );
+    });
+    return (
+      <div className="commentList">
+        {commentNodes}
+      </div>
+    );
+  }
+});
+
 var CommentForm = React.createClass({
   getInitialState: function() {
     return {author: '', text: ''};
@@ -79,13 +95,13 @@ var CommentForm = React.createClass({
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Your name"
           value={this.state.author}
           onChange={this.handleAuthorChange}
         />
         <input
           type="text"
-          placeholder="Important details about this illustrious personage..."
+          placeholder="Say something..."
           value={this.state.text}
           onChange={this.handleTextChange}
         />
@@ -95,45 +111,26 @@ var CommentForm = React.createClass({
   }
 });
 
-// COMMENT LIST
-var CommentList = React.createClass({
-  render: function() {
-    var commentNodes = this.props.data.map(function(comment) {
-      return (
-        <Comment author={comment.author} key={comment.id}>
-          {comment.text}
-        </Comment>
-      );
-    });
-    return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
-    );
-  }
-});
-
-// COMMENT
 var Comment = React.createClass({
   rawMarkup: function() {
     var md = new Remarkable();
     var rawMarkup = md.render(this.props.children.toString());
     return { __html: rawMarkup };
-  },
+},
 
   render: function() {
+    var md = new Remarkable();
     return (
       <div className="comment">
         <h2 className="commentAuthor">
           {this.props.author}
-        </h2> 
+        </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
       </div>
     );
   }
 });
 
-// REACT RENDER
 ReactDOM.render(
   <CommentBox url="/api/comments" pollInterval={2000} />,
   document.getElementById('content')
