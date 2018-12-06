@@ -1,17 +1,19 @@
 {
   "name": "react-tutorial",
   "version": "0.0.0",
-  "description": "Code from the React tutorial.",
+  "private": true,
+  "license": "see LICENSE file",
+  "description": "Code for the React tutorial.",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "http-status-codes": "^1.0.6"
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "stop": "taskkill /f /im node.exe || kill $(pgrep node)"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,7 @@
     "comment",
     "example"
   ],
-  "author": "petehunt",
+  "author": "danielgarcia",
   "bugs": {
     "url": "https://github.com/reactjs/react-tutorial/issues"
   },

@@ -1,4 +1,4 @@
-a. Make sure that you can explain:
+a. Explain:
 
    i. the component structure of the application. What makes the UI composable and why does this matter?
 
@@ -8,13 +8,17 @@ ANSWER: The tutorial says that "React is all about modular, composable component
 
 ANSWER: "JSX is a JavaScript syntax extension that looks similar to XML. You can use a simple JSX syntactic transform with React."  So in essence, JSX is merely a way to make component tree structures more readable and understandable.
 
-   iii. how the data flows through the components; how are comments loaded? created? saved?
+   iii. why ReactJS is safe with respect to XSS.
 
-ANSWER: A request is made to the server from the client browser, which the server responds to by routing the appropriate html page.  Within that page there is a React <div> marker, specifically <div id="content"></div>, which specifies the React component that needs to be generated.  The source for this is example.js, where all the appropriate JavaScript is stored.  The comment box is loaded, which is a component that includes a form.  If the user types a comment into the form and clicks "Post", the server saves the text from the comment in comments.json and then retrieves the content from comments.json and displays it on the page for the user to see.
+ANSWER: XSS, meaning "cross-site-scripting," is a way for network attackers to inject scripts into the client which could of course be used to do any number of things, which for example is often tracking the activity of the user. This can be done by injecting certain lines of HTML into the page the user is loading. By default, React does not allow this kind of HTML insertion, but it can be overridden (with a very obvious warning) by the developer.
 
-   iv. the nature and purpose of props and state; which is immutable and which is mutable and why does this distinction matter?
+   iv. how the data flows through the components. How are comments loaded? created? saved?
 
-ANSWER: First, "props" is shorthand for properties, and it is essentially used the way a static attribute usually is in object-oriented programming.  A comment component is basically an instance of a class, and props like "Author" and "Comment" are immutable attributes of each instance.  On the other hand, "state" is a mutable attribute that allows for interactions.  The state of the comment list component, for example, can change to reflect new comments as they appear.
+ANSWER: A request is made to the server from the client browser, which the server responds to by routing the appropriate HTML page.  Within that page there is a React <div> marker, specifically <div id="content"></div>, which specifies the React component that needs to be generated.  The source for this is example.js, where all the appropriate JavaScript is stored.  The comment box is loaded from example.js, which is a component that includes a form.  If the user types a comment into the form and clicks "Post", the server saves the text from the comment in comments.json and then retrieves the content from comments.json and displays it on the page for the user to see. We have implemented "optimistic updates" to display the new comment to the user on the comment list before it has actually refreshed from the server.
+
+   v. the nature and purpose of props and state. Which is immutable, which is mutable, and why does this distinction matter?
+
+ANSWER: "Props" is shorthand for properties, and it is essentially used the way a static attribute usually is in object-oriented programming.  A comment component is basically an instance of a class, and props like "Author" and "Comment" are immutable attributes of each instance.  On the other hand, "state" is a mutable attribute that allows for interactions.  The state of the comment list component, for example, can change to reflect new comments as they appear.
 
 b. Consider the following, more detailed questions based on statements in the tutorial.
 
@@ -22,14 +26,14 @@ b. Consider the following, more detailed questions based on statements in the tu
 
 ANSWER: Adding and removing "legal" comments in the comments.json file does work (the page will reflect the changes), but with one caveat; if a mistake is made in the edit and too much is deleted, it actually halts the express server.  You end up with a "SyntaxError: Unexpected end of JSON input" error message. 
 
-   ii. When the CommentBox has loaded comments from the server (in loadCommentsFromServer()), why doesn’t it call render() to make them visible?
+   ii. When the CommentBox has loaded comments from the server (in loadCommentsFromServer()), why doesn't it call render() to make them visible?
 
-ANSWER: Well in a manner of speaking it does, since it calls the CommentList, which contains the call to render the comments visible.
+ANSWER: Well in a manner of speaking it does, since it calls the CommentList, which contains the call to render the comments visible. In other words, it's just a matter of how the code is embedded in this case.
 
    iii. Why should components always represent the current state of the view?
 
 ANSWER: As an example, I suppose this is especially ideal in comment sections where you want live conversations to be possible.
 
-   iv.  The app implements optimistic updates. Isn’t optimism here more like foolishness? What if the server rejects the new comment (for whatever reason)?
+   iv.  The app implements optimistic updates. Isn't optimism here more like foolishness? What if the server rejects the new comment (for whatever reason)?
 
-ANSWER: I tried it.  The new comment quickly disappeared when it tried to fetch comments.json and found nothing there.  So it's not a huge deal, but it can result in a modest amount of confusion.
+ANSWER: I tried it.  The new comment quickly disappeared when it tried to fetch comments.json and found nothing there.  So it's not a huge deal, but it can result in a modest amount of confusion. I've actually been the victim of this once or twice, and I thought maybe some mod was deleting my comments on purpose.
