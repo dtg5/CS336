@@ -1,0 +1,12 @@
+a. Compare and contrast MongoDB and the SQL databases you've used before. Are there things that one can do that the other can't?
+
+ANSWER:  Frankly, for me it is hard to tell. Both MongoDB and something like T-SQL can perform similar CRUD operations. SQL seems a bit more formal of course, but you could probably force either of them to mimic most of what the other can do.
+
+b. You could run MongoDB locally. What advantages and/or disadvantages would that bring with respect to the cloud database you have now?
+
+ANSWER: The advantage would be faster read and write operations while maintaining compatibility with the online database, presumably. A disadvantage could be the multiplication of steps in work flow.
+
+c. You've built a "sandbox" database on mLab. Could you use this for a production database? Why or why not?
+
+ANSWER: MongoDB recommends against it, since there is no redundancy of the data. "Sandbox databases are unsuitable for 'production use'. Key considerations when running in production: High availability, Emergency support, Consistent and predictable performance, and Secure access and communication."
+
