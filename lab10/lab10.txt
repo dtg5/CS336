@@ -1,12 +1,27 @@
-a. Compare and contrast MongoDB and the SQL databases you've used before. Are there things that one can do that the other can't?
+Exercise 10.1
 
-ANSWER:  Frankly, for me it is hard to tell. Both MongoDB and something like T-SQL can perform similar CRUD operations. SQL seems a bit more formal of course, but you could probably force either of them to mimic most of what the other can do.
+  a. Compare and contrast MongoDB and the SQL databases you've used before. Are there things that one can do that the other can't?
 
-b. You could run MongoDB locally. What advantages and/or disadvantages would that bring with respect to the cloud database you have now?
+    ANSWER: Frankly, for me it is hard to tell. Both MongoDB and something like T-SQL can perform similar CRUD operations. SQL seems a bit more formal of course, but you could probably force either of them to mimic most of what the other can do.
 
-ANSWER: The advantage would be faster read and write operations while maintaining compatibility with the online database, presumably. A disadvantage could be the multiplication of steps in work flow.
+  b. You could run MongoDB locally. What advantages and/or disadvantages would that bring with respect to the cloud database you have now?
 
-c. You've built a "sandbox" database on mLab. Could you use this for a production database? Why or why not?
+    ANSWER: The advantage would be faster read and write operations while maintaining compatibility with the online database, presumably. A disadvantage could be the multiplication of steps in work flow.
 
-ANSWER: MongoDB recommends against it, since there is no redundancy of the data. "Sandbox databases are unsuitable for 'production use'. Key considerations when running in production: High availability, Emergency support, Consistent and predictable performance, and Secure access and communication."
+  c. You've built a "sandbox" database on mLab. Could you use this for a production database? Why or why not?
 
+    ANSWER: MongoDB recommends against it, since there is no redundancy of the data. "Sandbox databases are unsuitable for 'production use'. Key considerations when running in production: High availability, Emergency support, Consistent and predictable performance, and Secure access and communication."
+
+Exercise 10.2
+
+  a. For this integration of mLab into your application, was it better to run the modified server (npm start) or the full Webpack development environment (npm run dev)? Why?
+
+    ANSWER: The vast majority of my testing was actually just node server.js, the same command of course as npm start. the reason for this was because the tweaks were really only being made to the server, so the Webpack stuff was pretty much irrelevant. The server after all is not part of bundle.js or index.html, it's the thing that is serving those up.
+
+  b. Explain what happens when you modify the database using mLab's web interface rather than your application? Try adding/updating/deleting comment documents.
+
+    ANSWER: Any changes made to the database, whether made via the server or through mLab's web interface, are reflected pretty quickly on the localhost page. This is of course because the server is constantly polling the database to check for the latest data.
+
+  c. Is this comments application the sort of application that should use an SQL or a noSQL database? Explain your answer.
+
+    ANSWER: For the sake of scalability and flexibility, I'd say NOSQL is probably the better option. A more rigid SQL database works fine for a closed network (whether cloud-based or not) with various business rules and whatnot, but NOSQL seems to be what you want if you want quickness and accessibility. With SQL, "transactions" are king, since a business has to be very careful with its client data and who is doing what with it, and in what order. Public omments and such aren't nearly so secure, and since they're all user-based, there usually isn't much concern about conflicting transactions are varying credentials. Your account can either comment or it cannot.
