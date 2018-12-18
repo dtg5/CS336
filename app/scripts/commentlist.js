@@ -1,8 +1,8 @@
+
 import React from 'react';
 
 import Comment from './comment';
 
-// COMMENT LIST
 module.exports = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function(comment) {
@@ -13,9 +13,10 @@ module.exports = React.createClass({
       );
     });
     return (
-      <div className="commentList">
+      <div className="CommentList">
         {commentNodes}
       </div>
     );
   }
 });
+

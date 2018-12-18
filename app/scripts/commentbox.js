@@ -1,10 +1,11 @@
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 import CommentList from './commentlist';
 import CommentForm from './commentform';
 
-// COMMENT BOX
 module.exports = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
@@ -50,11 +51,12 @@ module.exports = React.createClass({
   },
   render: function() {
     return (
-      <div className="commentBox">
+      <div className="CommentBox">
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <CommentForm OnCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
   }
 });
+
