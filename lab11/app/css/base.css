@@ -2,8 +2,9 @@ body {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
+  line-height: 1.7;
   margin: 0;
-  padding: 10px;
+  padding: 30px;
 }
 
 a {
@@ -21,14 +22,8 @@ code {
   border-radius: 3px;
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   font-size: 12px;
-  margin: 20px;
-  padding: 0px;
-  display: block;
-  text-align: center;
-}
-
-.comment {
-  padding: .5em;
+  margin: 0 2px;
+  padding: 0 5px;
 }
 
 h1, h2, h3, h4 {
@@ -40,37 +35,23 @@ h1, h2, h3, h4 {
 h1 {
   border-bottom: 1px solid #ddd;
   font-size: 2.5em;
-  font-weight: bold;
-  margin: 0 0 5px;
-  padding: 0;
 }
 
 h2 {
   border-bottom: 1px solid #eee;
-  margin-bottom: 4px;
-  font-size: 1.75em;
+  font-size: 2em;
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 h4 {
-  font-size: 1em;
-}
-
-input {
-  width: 25em;
-  display: block;
-  position: center;
-}
-
-input[type="submit"] {
-  width: 25.6em;
+  font-size: 1.2em;
 }
 
 p, ul {
-  margin: 5px 0;
+  margin: 15px 0;
 }
 
 ul {

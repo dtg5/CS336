@@ -1,6 +1,6 @@
+
 import React from 'react';
 
-// COMMENT FORM
 module.exports = React.createClass({
   getInitialState: function() {
     return {author: '', text: ''};
@@ -18,21 +18,21 @@ module.exports = React.createClass({
     if (!text || !author) {
       return;
     }
-    this.props.onCommentSubmit({author: author, text: text});
+    this.props.OnCommentSubmit({author: author, text: text});
     this.setState({author: '', text: ''});
   },
   render: function() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form className="CommentForm" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Your name"
           value={this.state.author}
           onChange={this.handleAuthorChange}
         />
         <input
           type="text"
-          placeholder="Important details about this illustrious personage..."
+          placeholder="Say something..."
           value={this.state.text}
           onChange={this.handleTextChange}
         />
