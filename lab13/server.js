@@ -37,16 +37,16 @@
   // }
 
 // Powershell:
-  function psSetup() {
-    var ps = new shell({
-      executionPolicy: 'Bypass',
-      noProfile: true
-    });
-    ps.addCommand('"&" + $env:MONGO_PASSWORD + "&" + $env:MONGO_USER + "&"');
-    ps.invoke().then(output => {
-      str = output.toString().split('&');
-      credentials = {password:str[1], user:str[2]};
-      mongoUrl(credentials.password,credentials.user)
+//  function psSetup() {
+//    var ps = new shell({
+//      executionPolicy: 'Bypass',
+//      noProfile: true
+//    });
+//    ps.addCommand('"&" + $env:MONGO_PASSWORD + "&" + $env:MONGO_USER + "&"');
+//    ps.invoke().then(output => {
+//      str = output.toString().split('&');
+//      credentials = {password:str[1], user:str[2]};
+//      mongoUrl(credentials.password,credentials.user)
         // miscExpress();  <-- Ignore these.
         // appUse1();
         // appGet1();
@@ -55,21 +55,21 @@
         // appPut();
         // appDelete();
         // appUse2();
-      appListen();
-    })
-    .catch(err => {
-      console.log(err);
-      ps.dispose();
-    });
-  };
-if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
-  try {
-      psSetup();
-    }
-  catch(err) {
-      console.log('Powershell environment variables not set, checking Unix environment...')
-  };
-};
+//      appListen();
+//    })
+//    .catch(err => {
+//      console.log(err);
+//      ps.dispose();
+//    });
+//  };
+//if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
+//  try {
+//      psSetup();
+//    }
+//  catch(err) {
+//      console.log('Powershell environment variables not set, checking Unix environment...')
+//  };
+//};
 
 // Unix:
   function uxSetup() {
