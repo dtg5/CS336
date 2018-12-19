@@ -89,7 +89,7 @@ if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
   // function miscExpress() {
     app.exp.set('port', (process.env.PORT || 3000));
 
-    app.exp.use('/', express.static(APP_PATH));
+    app.exp.use('/', express.static(path.join(APP_PATH)));
     app.exp.use(bodyParser.json());
     app.exp.use(bodyParser.urlencoded({extended: true}));
   // }
