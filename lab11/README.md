@@ -1,14 +1,9 @@
-This sample code supports Calvin College
-[CS 336](https://cs.calvin.edu/courses/cs/336/kvlinden)
-[Unit 9: Webpack](https://cs.calvin.edu/courses/cs/336/kvlinden/09webpack/index.html).
+This sample code supports Calvin College CS 336 Unit 11: Heroku.
 
-The lab will upgrade the application from lab 8 to be modularized and
-bundled using WebPack. In development mode, it will run:
-- a development server on port 3001 to serve up the application (http://localhost:3001/).
-- a proxy server on port 3000 to serve up data (http://localhost:3000/api/comments).
+The lab will upgrade the application from lab 10 to deploy to Heroku using a git subtree branch. Look here for the running app:
 
-If versioning becomes a problem, use the explicit module version settings given
-in `package.json`. Note that the scripts provided here are configured for Linux.
-For Windows, you can run the backgrounded tasks individually.
+https://dtg5-production11.herokuapp.com/
+
+We maintain this public version of the full repo because deploying from private GitHub repos is trickier.
 
 (Submitted by Daniel Garcia)
