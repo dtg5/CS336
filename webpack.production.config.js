@@ -1,6 +1,6 @@
 
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -21,14 +21,14 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
-    new webpack.DefinePlugin({
+        new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-    new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin("[name]-[hash].css")
+        new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new ExtractTextPlugin("[name]-[hash].css")
     ]
 };

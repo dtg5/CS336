@@ -65,7 +65,6 @@ if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
 // Unix:
   function uxSetup() {
     mongoUrl(process.env.MONGO_PASSWORD, process.env.MONGO_USER);
-    console.log(database.db)
       // miscExpress();  <-- Ignore these.
       // appUse1();
       // appGet1();
@@ -77,12 +76,6 @@ if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
     app.exp.set('port', (process.env.PORT || 3000));
     app.exp.listen(app.exp.get('port'), function() {
       console.log('Server started: http://localhost:' + app.exp.get('port') + '/');
-    });
-    app.exp.get('/api/comments', function(req, res) {
-      database.db.collection("comments").find({}).toArray(function(err, docs) {
-        if (err) throw err;
-        res.json(docs);
-      });
     });
   };
   try {
@@ -199,14 +192,10 @@ if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
 // Our one MongoDB function:
   function mongoUrl(password, user) {
     user = user || 'cs336';
-    console.log(password, user);
     var mLab = 'mongodb://' + user + ':' +
       password + '@ds111568.mlab.com:11568/dtg5_cs336';
-    console.log(mLab);
     MongoClient.connect(mLab, function (err, client) {
-        console.log(client);
         if (err) throw err;
         database.db = client;
-        console.log(database.db);
     });
   }

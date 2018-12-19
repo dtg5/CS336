@@ -1,6 +1,6 @@
 {
   "name": "unit13-router",
-  "author": "kvlinden, dgarcia",
+  "author": "kvlinden",
   "version": "0.0.0",
   "description": "Router-enhanced version of the Facebook tutorial",
   "license": "ISC",
@@ -20,14 +20,13 @@
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
     "mongodb": "2.2.19",
-    "nib": "^1.1.2",
     "node-powershell": "3.3.1",
     "postcss-loader": "^1.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router": "^3.0.0",
     "remarkable": "^1.7.1",
     "style-loader": "^0.13.1",
-    "stylus": "^0.54.5",
     "webpack": "^1.13.3",
     "webpack-cli": "^1.5.3"
   },
@@ -37,9 +36,10 @@
   },
   "scripts": {
     "build": "webpack --progress",
-    "dev": "node server.js & webpack-dev-server --progress",
+    "stop": "taskkill /f /im node.exe || kill $(pgrep node)",
+    "dev": "nodemon --ignore app/ server.js & webpack-dev-server --progress &",
+    "install": "webpack --progress --config ./webpack.production.config.js",
     "start": "node server.js",
-    "start:dev": "node_modules/.bin/webpack-dev-server",
-    "stop": "taskkill /f /im node.exe || kill $(pgrep node)"
+    "start:dev": "node_modules/.bin/webpack-dev-server"
   }
 }
