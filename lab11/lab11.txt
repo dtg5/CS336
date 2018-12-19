@@ -10,3 +10,12 @@ b. List the optimizations you've configured for this production version and, if 
 
 Exercise 11.2:
 
+a. What advantage is there is deploying an application to a PaaS tool like Heroku?
+
+    ANSWER: Well for one thing, it might allow me to do fewer complete rebuilds. Every time I move between computers, I have to worry about downloading all of these dependencies again, which takes a while.
+
+b. How does Heroku know how to install and run your application (after pulling it from the specified branch on GitHub)?
+
+    ANSWER: Evidently it just runs npm install and npm start automatically and hey-presto, it runs!
+
+    https://dtg5-production11.herokuapp.com/
