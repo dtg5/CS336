@@ -28,7 +28,6 @@
   var APP_PATH = path.join(__dirname, 'dist');
 
 // Powershell:
-if (process.env.MY_ENV!="heroku") {
   function psSetup() {
     var ps = new shell({
       executionPolicy: 'Bypass',
@@ -54,6 +53,7 @@ if (process.env.MY_ENV!="heroku") {
       ps.dispose();
     });
   };
+if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
   try {
       psSetup();
     }
@@ -73,13 +73,16 @@ if (process.env.MY_ENV!="heroku") {
       // appPut();
       // appDelete();
       // appUse2();
-    appListen();
+    app.exp.set('port', (process.env.PORT || 3000));
+    app.exp.listen(app.exp.get('port'), function() {
+      console.log('Server started: http://localhost:' + app.exp.get('port') + '/');
+    });
   };
   try {
     uxSetup();
   }
   catch(err) {
-    console.log('Unix environment variables not set, checking Powershell environment...')
+    console.log('Unix environment variables not set...')
   };
 
 // Express clutter:
