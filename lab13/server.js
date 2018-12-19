@@ -27,6 +27,15 @@
   let database = {db:null}
   var APP_PATH = path.join(__dirname, 'dist');
 
+  // Express clutter:
+  // function miscExpress() {
+    app.exp.set('port', (process.env.PORT || 3000));
+
+    app.exp.use('/', express.static(APP_PATH));
+    app.exp.use(bodyParser.json());
+    app.exp.use(bodyParser.urlencoded({extended: true}));
+  // }
+
 // Powershell:
   function psSetup() {
     var ps = new shell({
@@ -84,15 +93,6 @@ if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
   catch(err) {
     console.log('Unix environment variables not set...')
   };
-
-// Express clutter:
-  // function miscExpress() {
-    app.exp.set('port', (process.env.PORT || 3000));
-
-    app.exp.use('/', express.static(APP_PATH));
-    app.exp.use(bodyParser.json());
-    app.exp.use(bodyParser.urlencoded({extended: true}));
-  // }
 
   // Additional middleware which will set headers that we need on each request.
   // function appUse1() {
