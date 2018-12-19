@@ -53,12 +53,14 @@
       ps.dispose();
     });
   };
+if (process.env.MY_ENV!="heroku" && process.env.MY_ENV!="linux") {
   try {
       psSetup();
     }
   catch(err) {
       console.log('Powershell environment variables not set, checking Unix environment...')
   };
+};
 
 // Unix:
   function uxSetup() {
@@ -71,13 +73,16 @@
       // appPut();
       // appDelete();
       // appUse2();
-    appListen();
+    app.exp.set('port', (process.env.PORT || 3000));
+    app.exp.listen(app.exp.get('port'), function() {
+      console.log('Server started: http://localhost:' + app.exp.get('port') + '/');
+    });
   };
   try {
     uxSetup();
   }
   catch(err) {
-    console.log('Unix environment variables not set, checking Powershell environment...')
+    console.log('Unix environment variables not set...')
   };
 
 // Express clutter:
