@@ -41,6 +41,7 @@
 })();
 
 // Powershell:
+if (process.env.MY_ENV!="heroku") {
   function psSetup() {
     var ps = new shell({
       executionPolicy: 'Bypass',
@@ -72,6 +73,7 @@
   catch(err) {
       console.log('Powershell environment variables not set, checking Unix environment...')
   };
+};
 
 // Unix:
   function uxSetup() {
